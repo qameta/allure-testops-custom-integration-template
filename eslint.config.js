@@ -1,21 +1,17 @@
 import js from "@eslint/js";
-import tseslint from "typescript-eslint";
 import stylistic from "@stylistic/eslint-plugin";
+import prettier from "eslint-config-prettier";
 import importX from "eslint-plugin-import-x";
 import jsdoc from "eslint-plugin-jsdoc";
 import n from "eslint-plugin-n";
 import noNull from "eslint-plugin-no-null";
 import preferArrow from "eslint-plugin-prefer-arrow";
-import prettier from "eslint-config-prettier";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: [
-      ".yarn/**/*",
-      "**/node_modules/**/*",
-      "**/dist/**/*",
-    ],
+    ignores: [".yarn/**/*", "**/node_modules/**/*", "**/dist/**/*"],
   },
 
   js.configs.recommended,

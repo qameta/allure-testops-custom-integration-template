@@ -2,16 +2,16 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import type {
-  ExtServerInfo,
-  ExtUser,
+  ExtIssueCreate,
+  ExtIssueLink,
+  ExtIssueType,
   ExtJob,
   ExtJobRun,
   ExtJobStartRequest,
-  ExtIssueLink,
   ExtProject,
-  ExtIssueType,
-  ExtIssueCreate,
+  ExtServerInfo,
   ExtTestLink,
+  ExtUser,
 } from "./model.js";
 
 const port = Number(process.env.PORT) || 3000;
@@ -121,9 +121,12 @@ app.get("/testcase/:testCaseKey", async (c) => {
   return c.json(res);
 });
 
-serve({
-  fetch: app.fetch,
-  port,
-}, (info) => {
-  console.info(`Server is running on http://localhost:${info.port}`);
-});
+serve(
+  {
+    fetch: app.fetch,
+    port,
+  },
+  (info) => {
+    console.info(`Server is running on http://localhost:${info.port}`);
+  },
+);
