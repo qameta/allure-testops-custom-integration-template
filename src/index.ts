@@ -100,8 +100,6 @@ app.get("/issuefield", async (c) => {
   const issueTypeId = c.req.query("issueTypeId");
   const res: unknown[] = [];
 
-  // TODO: response: ExtFormField[] (тут дофига разных типов может быть - это лучше отдельно проговорим как доберешься)
-
   return c.json(res);
 });
 
