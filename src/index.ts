@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { logger } from "hono/logger";
 import type {
   ExtIssueCreate,
   ExtIssueLink,
@@ -16,6 +17,7 @@ import type {
 
 const port = Number(process.env.PORT) || 3000;
 const app = new Hono();
+app.use(logger());
 
 app.get("/server/info", async (c) => {
   const res: ExtServerInfo = {} as ExtServerInfo;
