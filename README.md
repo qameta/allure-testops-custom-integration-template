@@ -30,37 +30,37 @@ docker compose up -d
 
 ### Server Info
 
-| # | Method | Route | Params | Response |
-|---|--------|-------|--------|----------|
-| 1 | `GET` | `/server/info` | — | `ExtServerInfo` |
-| 2 | `GET` | `/me` | — | `ExtUser` |
+| #   | Method | Route          | Params | Response        |
+| --- | ------ | -------------- | ------ | --------------- |
+| 1   | `GET`  | `/server/info` | —      | `ExtServerInfo` |
+| 2   | `GET`  | `/me`          | —      | `ExtUser`       |
 
 ### Job Management
 
-| # | Method | Route | Params | Response |
-|---|--------|-------|--------|----------|
-| 3 | `GET` | `/job` | `?query=` | `ExtJob[]` |
-| 4 | `GET` | `/job/:id` | `:id` | `ExtJob` |
-| 5 | `POST` | `/job/:id/start` | `:id`, body: `ExtJobStartRequest` | `ExtJobRun` |
-| 6 | `GET` | `/job/:id/:buildNumber` | `:id`, `:buildNumber` | `ExtJobRun` |
-| 7 | `POST` | `/job/:id/:buildNumber/stop` | `:id`, `:buildNumber` | `ExtJobRun` |
+| #   | Method | Route                        | Params                            | Response    |
+| --- | ------ | ---------------------------- | --------------------------------- | ----------- |
+| 3   | `GET`  | `/job`                       | `?query=`                         | `ExtJob[]`  |
+| 4   | `GET`  | `/job/:id`                   | `:id`                             | `ExtJob`    |
+| 5   | `POST` | `/job/:id/start`             | `:id`, body: `ExtJobStartRequest` | `ExtJobRun` |
+| 6   | `GET`  | `/job/:id/:buildNumber`      | `:id`, `:buildNumber`             | `ExtJobRun` |
+| 7   | `POST` | `/job/:id/:buildNumber/stop` | `:id`, `:buildNumber`             | `ExtJobRun` |
 
 ### Issue Tracking
 
-| # | Method | Route | Params | Response |
-|---|--------|-------|--------|----------|
-| 8 | `GET` | `/issue` | `?search=` | `ExtIssueLink[]` |
-| 9 | `GET` | `/issue/:key` | `:key` | `ExtIssueLink` |
-| 10 | `GET` | `/project` | `?search=` | `ExtProject[]` |
-| 11 | `GET` | `/issuetype` | `?projectKey=` | `ExtIssueType[]` |
-| 12 | `GET` | `/issuefield` | `?projectKey=`, `?issueTypeId=` | `unknown[]` |
-| 13 | `POST` | `/issue` | `?projectKey=`, `?issueTypeId=`, body: `ExtIssueCreate` | `ExtIssueLink` |
+| #   | Method | Route         | Params                                                  | Response         |
+| --- | ------ | ------------- | ------------------------------------------------------- | ---------------- |
+| 8   | `GET`  | `/issue`      | `?search=`                                              | `ExtIssueLink[]` |
+| 9   | `GET`  | `/issue/:key` | `:key`                                                  | `ExtIssueLink`   |
+| 10  | `GET`  | `/project`    | `?search=`                                              | `ExtProject[]`   |
+| 11  | `GET`  | `/issuetype`  | `?projectKey=`                                          | `ExtIssueType[]` |
+| 12  | `GET`  | `/issuefield` | `?projectKey=`, `?issueTypeId=`                         | `unknown[]`      |
+| 13  | `POST` | `/issue`      | `?projectKey=`, `?issueTypeId=`, body: `ExtIssueCreate` | `ExtIssueLink`   |
 
 ### Test Cases
 
-| # | Method | Route | Params | Response |
-|---|--------|-------|--------|----------|
-| 14 | `GET` | `/testcase/:testCaseKey` | `:testCaseKey` | `ExtTestLink` |
+| #   | Method | Route                    | Params         | Response      |
+| --- | ------ | ------------------------ | -------------- | ------------- |
+| 14  | `GET`  | `/testcase/:testCaseKey` | `:testCaseKey` | `ExtTestLink` |
 
 ## API calls
 
@@ -289,4 +289,3 @@ These parameters need to be available on the Custom CI side and accessible from 
 - **Unique identifier of the pipeline** - When a pipeline is executed, it should have a unique identifier, preferably across the whole CI, not on the project level.
 - **URL of the CI pipeline** - URL an end user could use to access the pipeline execution and see the details.
 - **Branch used for the pipeline execution** - Information on the VCS branch used to run the pipeline.
-
