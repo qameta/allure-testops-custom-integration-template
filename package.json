@@ -7,58 +7,36 @@
   "bugs": {
     "url": "https://github.com/allure-framework/allure-testops-ci-integration-template/issues"
   },
+  "license": "ISC",
+  "author": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/allure-framework/allure-testops-ci-integration-template.git"
   },
-  "license": "ISC",
-  "author": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
-    "eslint": "eslint .",
-    "fix": "run-s fix:*",
-    "fix:eslint": "eslint --fix .",
-    "fix:prettier": "prettier --write .",
+    "lint": "oxlint --type-aware",
+    "format:check": "oxfmt --check",
+    "fix": "npm run fix:oxlint && npm run fix:oxfmt",
+    "fix:oxlint": "oxlint --type-aware --fix --quiet",
+    "fix:oxfmt": "oxfmt",
     "start": "node dist/index.js",
-    "prepare": "husky",
-    "lint-staged": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,yml,yaml}": [
-      "prettier --write"
-    ]
-  },
-  "dependencies": {
-    "@hono/node-server": "^1.19.9",
-    "hono": "^4.11.9"
+    "test": "tsx --test test/api.test.ts",
+    "test:docker": "tsx --test test/docker.test.ts"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.8.0",
-    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
-    "@types/node": "^20.11.17",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import-x": "^4.16.1",
-    "eslint-plugin-jsdoc": "^62.5.4",
-    "eslint-plugin-n": "^17.23.2",
-    "eslint-plugin-no-null": "^1.0.2",
-    "eslint-plugin-prefer-arrow": "^1.2.3",
-    "globals": "^17.3.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "npm-run-all2": "^8.0.4",
-    "prettier": "^3.8.1",
-    "prettier-plugin-packagejson": "^3.0.0",
-    "tsx": "^4.7.1",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.54.0"
+    "@types/node": "^24.13.2",
+    "lefthook": "^2.1.9",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0",
+    "oxlint-tsgolint": "^0.23.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": "24.14.x"
   }
 }

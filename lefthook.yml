@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: oxlint-oxfmt-js-ts
+      glob: "**/*.{js,ts}"
+      stage_fixed: true
+      run: npx oxlint --type-aware --fix {staged_files} && npx oxfmt {staged_files}
+    - name: oxfmt-config
+      glob: "**/*.{json,yml,yaml,md}"
+      stage_fixed: true
+      run: npx oxfmt {staged_files}
